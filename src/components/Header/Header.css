@@ -1,16 +1,19 @@
 .Header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-
-    width: 100%;
     background: linear-gradient(
             to bottom,
             black 0%,
-            rgba(0, 0, 0, 1) 30%,
+            rgba(0, 0, 0, 1) 40%,
             rgba(0,0,0,0) 100%
     );
-    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding-top: 10px;
 }
 
 
@@ -18,11 +21,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 20%;
+    min-width: 20%;
 }
 
-.left-nav,
-.right-nav {
+
+.nav {
     display: flex;
+    justify-content: center;
     max-width: 40%;
     min-width: 40%;
 }
