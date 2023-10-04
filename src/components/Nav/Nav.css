@@ -1,0 +1,25 @@
+.left-Nav,
+.right-Nav {
+    display: flex;
+
+}
+
+.left-Nav {
+    justify-content: flex-start;
+    margin-right: auto;
+    margin-left: 30px;
+}
+
+.right-Nav {
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+.Navlink {
+    color: white;
+    margin: 10px;
+}
+
+
+
