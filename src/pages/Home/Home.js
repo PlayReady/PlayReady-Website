@@ -1,12 +1,13 @@
 import React from 'react';
-import Header from "../../components/Header/Header";
-import logosvg from "../../assets/logo white.svg";
+import "./Home.css"
+import background from "../../assets/placeholders/computers/homepage-background.png"
+import WelcomeSection from "./WelcomeSection";
 
-function Home(props) {
+function Home() {
     return (
-        <>
-            heLLO?
-        </>
+        <div className="main">
+            <WelcomeSection/>
+        </div>
     );
 }
 
