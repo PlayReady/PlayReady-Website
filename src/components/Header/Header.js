@@ -22,7 +22,7 @@ function Header() {
                 <Nav options={leftOptions}/>
             </div>
             <div className="logo">
-                <img src={logosvg} alt="logo"/>
+                <img src={logosvg} alt="logo" height={50}/>
             </div>
             <div className="nav">
                 <Nav alignRight options={rightOptions}/>

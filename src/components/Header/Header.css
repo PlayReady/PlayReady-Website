@@ -5,15 +5,16 @@
     background: linear-gradient(
             to bottom,
             black 0%,
-            rgba(0, 0, 0, 1) 40%,
+            rgba(0,0,0,1) 75%,
             rgba(0,0,0,0) 100%
     );
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 120;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 
