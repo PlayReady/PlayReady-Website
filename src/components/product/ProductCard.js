@@ -1,5 +1,6 @@
 import React from 'react';
 import "./Product.css";
+import Button from "../button/Button";
 
 function ProductCard({product}) {
     return (
@@ -8,7 +9,7 @@ function ProductCard({product}) {
             <div className="productCardContent">
                 <h1>{product.name}</h1>
                 <p>€{product.price},- per maand</p>
-                <button>Read more</button>
+                <Button>Read more</Button>
             </div>
         </div>
     );
