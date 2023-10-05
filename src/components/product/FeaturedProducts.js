@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './Product.css';
 import ProductCard from './ProductCard';
-import productImage from '../../assets/placeholders/computers/product.png';
 import axios from 'axios';
 
 function FeaturedProducts() {
