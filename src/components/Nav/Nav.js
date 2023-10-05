@@ -7,7 +7,7 @@ function Nav({alignRight, options}) {
     <nav className={alignRight ? 'right-Nav' : 'left-Nav'}>
       {options && options.map((option) => {
         return (
-          < NavLink className="Navlink" to={option.path}>
+          < NavLink key={option} className="Navlink" to={option.path}>
             <h2>{option.name}</h2>
           </NavLink>
         );
