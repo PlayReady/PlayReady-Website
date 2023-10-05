@@ -1,20 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Product.css';
 import ProductCard from './ProductCard';
 import axios from 'axios';
 
 function FeaturedProducts() {
-  const [featuredProducts, setFeaturedProducts] =useState([]);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
 
-  async function fetchFeaturedProducts() {
-    try {
-      const {data} = await axios.get('localhost:8080/products/featured');
-      setFeaturedProducts(data);
-    } catch (e) {
-      console.log(e);
+  useEffect(()=> {
+    async function fetchFeaturedProducts() {
+      try {
+        const {data} = await axios.get('http://localhost:8080/products/featured');
+        setFeaturedProducts(data);
+      } catch (e) {
+        console.log(e);
+      }
     }
-  }
-  fetchFeaturedProducts();
+    fetchFeaturedProducts();
+  }, [],
+  );
 
 
   return (
