@@ -3,28 +3,39 @@ import axios from 'axios';
 import ProductCard from '../../components/product/ProductCard';
 
 function ProductOverview() {
-  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [Products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] =useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(()=> {
-    async function fetchFeaturedProducts() {
+    async function fetchProducts() {
+      setIsLoading(true);
       try {
         const {data} = await axios.get('http://localhost:8080/products');
-        setFeaturedProducts(data);
+        setProducts(data);
       } catch (e) {
+        setError(e);
         console.log(e);
       }
+      setIsLoading(false);
     }
-    fetchFeaturedProducts();
+    fetchProducts();
   }, [],
   );
 
 
   return (
-    <div className="productFeature">
-      {featuredProducts.map((product) => {
+    < div className="productFeature">
+      {isLoading && <p>Loading</p>}
+      {error && <p>{error}</p>}
+      {Products.map((product) => {
         return <ProductCard key={product} product={product}/>;
       })}
+
+
     </div>
+
+
   );
 }
 
