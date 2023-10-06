@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import ProductCard from '../../components/product/ProductCard';
+import Loader from '../../components/loader/Loader';
+import './ProductOverview.css';
 
 function ProductOverview() {
   const [Products, setProducts] = useState([]);
@@ -25,8 +27,8 @@ function ProductOverview() {
 
 
   return (
-    < div className="productFeature">
-      {isLoading && <p>Loading</p>}
+    < div className="productOverview">
+      {isLoading && <Loader/>}
       {error && <p>{error}</p>}
       {Products.map((product) => {
         return <ProductCard key={product} product={product}/>;
