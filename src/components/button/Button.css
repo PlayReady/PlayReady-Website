@@ -11,6 +11,7 @@ button {
     margin: 10px;
     border-radius: 30px;
     transition: color 0.3s, border-color 0.3s;
+    min-height: 50px;
 }
 button:hover {
     color: #60267F;
