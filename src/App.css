@@ -12,3 +12,7 @@ body {
 ::-webkit-scrollbar {
     width: 0; /* This will hide the scrollbar */
 }
+
+h2 {
+    font-size: 30px;
+}
