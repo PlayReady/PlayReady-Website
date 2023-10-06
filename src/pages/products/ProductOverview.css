@@ -1,0 +1,8 @@
+.productOverview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
