@@ -1,4 +1,8 @@
 button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: white solid;
     background-color: transparent;
     color:white;
@@ -12,4 +16,13 @@ button:hover {
     color: #60267F;
     border-color: #60267F;
     cursor: pointer;
+}
+
+.overlay {
+    position: absolute;
+
+}
+
+.loading {
+    color: transparent;
 }
