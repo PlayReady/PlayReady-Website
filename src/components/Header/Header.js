@@ -5,10 +5,8 @@ import Nav from '../Nav/Nav';
 
 function Header() {
   const leftOptions = [
-    {
-      name: 'home',
-      path: '/',
-    },
+    {name: 'Home', path: '/'},
+    {name: 'Products', path: '/products'},
   ];
   const rightOptions = [
     {

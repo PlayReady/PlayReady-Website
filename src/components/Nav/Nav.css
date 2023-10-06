@@ -17,9 +17,20 @@
 }
 
 .Navlink {
+    border-bottom:solid 5px transparent;
+    font-size: 24px;
+    text-decoration: none;
     color: white;
     margin: 10px;
+    transition: border-bottom 0.3s,color 0.3s;
 }
 
+.Navlink:hover ,
+.active {
+    border-bottom:solid 5px #60267F;
+}
+.active{
+    color: #60267F;
+}
 
 

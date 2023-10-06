@@ -1,9 +1,12 @@
 import React from 'react';
 import './Button.css';
 
-function Button({children}) {
+function Button({children, onclick}) {
+  function handleClick() {
+    onclick();
+  }
   return (
-    <button>
+    <button onClick={handleClick}>
       {children}
     </button>
   );
