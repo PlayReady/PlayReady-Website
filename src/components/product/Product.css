@@ -6,6 +6,7 @@
 }
 
 .productCard {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -15,9 +16,12 @@
     background-color: black;
     margin: 30px;
     border-radius: 25px;
-    box-shadow: 30px 30px 12px rgba(0,0,0,0.25);
+    box-shadow: 30px 30px 12px rgba(0,0,0,0.30);
     overflow: hidden;
+    border: transparent;
 }
+
+
 
 .productCardContent {
     display: flex;
@@ -25,6 +29,11 @@
     flex-direction: column;
     align-items: center;
     padding-bottom: 30px;
+}
+
+.productCardContent h2,
+.productCardContent p {
+    margin: 10px 0 10px 0;
 }
 
 .productImage {
