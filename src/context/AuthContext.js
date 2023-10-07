@@ -10,9 +10,12 @@ function AuthContextProvider({children}) {
   const [isAuth, setAuth] = useState(false);
 
   useEffect(()=>{
-    const decodedToken = jwtDecode(localStorage.getItem('token'));
-    if (decodedToken.exp<Date.now()) {
-      setAuth(true);
+    const token = localStorage.getItem('token');
+    if (token!==null) {
+      const decodedToken = jwtDecode(localStorage.getItem('token'));
+      if (decodedToken.exp<Date.now()) {
+        setAuth(true);
+      }
     }
   });
 
@@ -26,6 +29,7 @@ function AuthContextProvider({children}) {
           });
       localStorage.setItem('token', data);
       setAuth(true);
+      navigator('/profile');
     } catch (e) {
       console.log(e);
       return e;
@@ -35,6 +39,7 @@ function AuthContextProvider({children}) {
   function logout() {
     localStorage.clear();
     setAuth(false);
+    navigator('/');
   }
 
   function getToken() {

@@ -5,6 +5,7 @@ import Home from './pages/Home/Home';
 import Header from './components/Header/Header';
 import ProductOverview from './pages/products/ProductOverview';
 import Login from './pages/login/Login';
+import Logout from './pages/Logout/Logout';
 
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
         <Route
           path="/login"
           element={<Login/>}
+        />
+        <Route
+          path="/logout"
+          element={<Logout/>}
         />
       </Routes>
     </>
