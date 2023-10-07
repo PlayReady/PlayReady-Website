@@ -3,19 +3,26 @@ import TextInput from '../../components/textinput/TextInput';
 import Button from '../../components/button/Button';
 import './Login.css';
 import {AuthContext} from '../../context/AuthContext';
+import ErrorText from '../../components/error/ErrorText';
 
 function Login() {
   const {login} = useContext(AuthContext);
   const [credentials, setCredentials] = useState({username: '', password: ''});
-
+  const [error, setError]=useState('');
   const handleInputChange = (event) => {
     const {name, value} = event.target;
     setCredentials({...credentials, [name]: value});
   };
 
-  function handleSubmit() {
-    login(credentials);
+  async function handleSubmit() {
+    try {
+      await login(credentials);
+    } catch (e) {
+      console.error(e);
+      setError('Something went wrong.');
+    }
   }
+
   return (
     <div className="loginPage">
       <div className="container">
@@ -27,12 +34,17 @@ function Login() {
           value={credentials.username}
         />
         <TextInput
+          password
           name="password"
           placeholder="Wachtwoord"
           onchange={handleInputChange}
           value={credentials.password}
         />
-        <Button onclick={handleSubmit}>Log in</Button>
+        {error &&<ErrorText>{error}</ErrorText>}
+        <Button
+
+          onclick={handleSubmit}
+        >Log in</Button>
       </div>
     </div>
   );
