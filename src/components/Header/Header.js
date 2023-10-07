@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import logosvg from '../../assets/logo white.svg';
 import './Header.css';
 import Nav from '../Nav/Nav';
+import {AuthContext} from '../../context/AuthContext';
 
 function Header() {
-  const [auth, setAuth]=useState();
+  const {isAuth}=useContext(AuthContext);
 
   const leftOptions = [
     {name: 'Home', path: '/'},
@@ -26,7 +27,7 @@ function Header() {
         <img src={logosvg} alt="logo" height={50}/>
       </div>
       <div className="nav">
-        <Nav alignRight options={auth? rightOptionsAuth: rightOptions}/>
+        <Nav alignRight options={isAuth? rightOptionsAuth: rightOptions}/>
       </div>
 
     </div>
