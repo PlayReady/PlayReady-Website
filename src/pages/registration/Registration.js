@@ -34,13 +34,12 @@ function Registration() {
   async function handleSubmit() {
     setLoading(true);
     try {
-      await axios.post('http://localhost:8080/users',
+      await axios.post('http://localhost:8080/register',
           {
             'username': credentials.username,
             'email': credentials.email,
             'phonenumber': credentials.phonenumber,
             'password': credentials.password,
-            'roles': [],
           });
       login(credentials);
     } catch (e) {
