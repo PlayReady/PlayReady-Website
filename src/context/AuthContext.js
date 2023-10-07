@@ -32,7 +32,7 @@ function AuthContextProvider({children}) {
       navigator('/profile');
     } catch (e) {
       console.log(e);
-      return e;
+      throw e;
     }
   }
 
