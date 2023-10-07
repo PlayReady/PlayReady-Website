@@ -8,18 +8,19 @@ function AuthContextProvider({children}) {
   const navigator =useNavigate();
   const [isAuth, setAuth] = useState(false);
 
-  async function login(username, password) {
+  async function login(credentials) {
     try {
       const {data} = await axios.post(
           'http://localhost:8080/auth',
           {
-            'username': username,
-            'password': password,
+            'username': credentials.username,
+            'password': credentials.password,
           });
       localStorage.setItem('token', data);
       setAuth(true);
     } catch (e) {
       console.log(e);
+      return e;
     }
   }
 
