@@ -12,7 +12,8 @@ function Header() {
     {name: 'Products', path: '/products'},
   ];
   const rightOptionsAuth = [
-    {name: 'profile', path: '/profile'},
+    {name: 'Profiel', path: '/profile'},
+    {name: 'Log uit', path: '/logout'},
   ];
   const rightOptions = [
     {name: 'Log in', path: '/login'},
