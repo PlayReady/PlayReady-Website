@@ -71,12 +71,14 @@ function Registration() {
         />
         <TextInput
           name="password"
+          password
           placeholder="Wachtwoord"
           onchange={handleInputChange}
           value={credentials.password}
         />
         <TextInput
           name="confirmpassword"
+          password
           placeholder="Wachtwoord bevestigen"
           onchange={handleInputChange}
           value={credentials.confirmpassword}
