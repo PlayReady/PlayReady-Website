@@ -1,15 +1,31 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import TextInput from '../../components/textinput/TextInput';
 import Button from '../../components/button/Button';
 import axios from 'axios';
 import {AuthContext} from '../../context/AuthContext';
 import Loader from '../../components/loader/Loader';
 import './Registration.css';
+import registrationValidator from './RegistrationValidator';
 
 function Registration(props) {
-  const [credentials, setCredentials] = useState({username: '', password: ''});
+  const [credentials, setCredentials] = useState(
+      {email: '',
+        username: '',
+        password: '',
+        phonenumber: '',
+        confirmpassword: ''},
+  );
+  const [validated, setValidated] = useState(false);
   const [loading, setLoading] = useState(false);
   const {login} = useContext(AuthContext);
+  useEffect(()=> {
+    if (registrationValidator(credentials)) {
+      setValidated(true);
+    } else {
+      setValidated(false);
+    }
+  }, [credentials]);
+
 
   const handleInputChange = (event) => {
     const {name, value} = event.target;
@@ -17,16 +33,20 @@ function Registration(props) {
   };
   async function handleSubmit() {
     setLoading(true);
-    try {
-      await axios.post('http://localhost:8080/users',
-          {
-            'username': credentials.username,
-            'password': credentials.password,
-            'roles': [],
-          });
-      login(credentials);
-    } catch (e) {
-      console.log(e);
+    if (validated) {
+      try {
+        await axios.post('http://localhost:8080/users',
+            {
+              'username': credentials.username,
+              'email': credentials.email,
+              'phonenumber': credentials.phonenumber,
+              'password': credentials.password,
+              'roles': [],
+            });
+        login(credentials);
+      } catch (e) {
+        console.log(e);
+      }
     }
     setLoading(false);
   }
@@ -44,21 +64,30 @@ function Registration(props) {
           name="email"
           placeholder="e-mail"
           onchange={handleInputChange}
-          value={credentials.username}
+          value={credentials.email}
+        />
+        <TextInput
+          name="phonenumber"
+          placeholder="Telefoon nummer"
+          onchange={handleInputChange}
+          value={credentials.phonenumber}
         />
         <TextInput
           name="password"
           placeholder="Wachtwoord"
           onchange={handleInputChange}
-          value={credentials.username}
-        />
-        <TextInput
-          name="confirm password"
-          placeholder="Wachtwoord bevestigen"
-          onchange={handleInputChange}
           value={credentials.password}
         />
-        <Button onclick={handleSubmit}>
+        <TextInput
+          name="confirmpassword"
+          placeholder="Wachtwoord bevestigen"
+          onchange={handleInputChange}
+          value={credentials.confirmpassword}
+        />
+        <Button
+          onclick={handleSubmit}
+          disabled={!validated}
+        >
           {loading ?<Loader/> : 'Registreer'}
         </Button>
       </div>
