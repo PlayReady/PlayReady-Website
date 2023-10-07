@@ -1,12 +1,13 @@
 import React from 'react';
 import './TextInput.css';
 
-function TextInput({placeholder, value, setvalue}) {
+function TextInput({name, placeholder, value, onchange}) {
   return (
     <input
+      name={name}
       placeholder={placeholder}
       value={value}
-      onChange={(e)=>setvalue(e.target.value)}
+      onChange={onchange}
     />
   );
 }

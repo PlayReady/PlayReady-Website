@@ -1,6 +1,7 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 export const AuthContext = createContext({});
 
@@ -8,18 +9,26 @@ function AuthContextProvider({children}) {
   const navigator =useNavigate();
   const [isAuth, setAuth] = useState(false);
 
-  async function login(username, password) {
+  useEffect(()=>{
+    const decodedToken = jwtDecode(localStorage.getItem('token'));
+    if (decodedToken.exp<Date.now()) {
+      setAuth(true);
+    }
+  });
+
+  async function login(credentials) {
     try {
       const {data} = await axios.post(
           'http://localhost:8080/auth',
           {
-            'username': username,
-            'password': password,
+            'username': credentials.username,
+            'password': credentials.password,
           });
       localStorage.setItem('token', data);
       setAuth(true);
     } catch (e) {
       console.log(e);
+      return e;
     }
   }
 

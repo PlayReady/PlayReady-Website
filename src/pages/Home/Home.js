@@ -5,7 +5,7 @@ import FeaturedProducts from '../../components/product/FeaturedProducts';
 
 function Home() {
   return (
-    <div className="main">
+    <div className="HomePage">
       <WelcomeSection/>
       <FeaturedProducts/>
     </div>
