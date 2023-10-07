@@ -6,14 +6,14 @@ import jwtDecode from 'jwt-decode';
 export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
-  const navigator =useNavigate();
+  const navigator = useNavigate();
   const [isAuth, setAuth] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     const token = localStorage.getItem('token');
-    if (token!==null) {
+    if (token !== null) {
       const decodedToken = jwtDecode(localStorage.getItem('token'));
-      if (decodedToken.exp<Date.now()) {
+      if (decodedToken.exp < Date.now()) {
         setAuth(true);
       }
     }
@@ -50,11 +50,16 @@ function AuthContextProvider({children}) {
     }
   }
 
+  function getUser() {
+    return jwtDecode(getToken()).sub;
+  }
+
   const contextData = {
     isAuth,
     login,
     logout,
     getToken,
+    getUser,
   };
 
   return (
