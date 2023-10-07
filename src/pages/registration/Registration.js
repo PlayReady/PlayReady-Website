@@ -7,7 +7,7 @@ import Loader from '../../components/loader/Loader';
 import './Registration.css';
 import registrationValidator from './RegistrationValidator';
 
-function Registration(props) {
+function Registration() {
   const [credentials, setCredentials] = useState(
       {email: '',
         username: '',
@@ -33,20 +33,18 @@ function Registration(props) {
   };
   async function handleSubmit() {
     setLoading(true);
-    if (validated) {
-      try {
-        await axios.post('http://localhost:8080/users',
-            {
-              'username': credentials.username,
-              'email': credentials.email,
-              'phonenumber': credentials.phonenumber,
-              'password': credentials.password,
-              'roles': [],
-            });
-        login(credentials);
-      } catch (e) {
-        console.log(e);
-      }
+    try {
+      await axios.post('http://localhost:8080/users',
+          {
+            'username': credentials.username,
+            'email': credentials.email,
+            'phonenumber': credentials.phonenumber,
+            'password': credentials.password,
+            'roles': [],
+          });
+      login(credentials);
+    } catch (e) {
+      console.log(e);
     }
     setLoading(false);
   }

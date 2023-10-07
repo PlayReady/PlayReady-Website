@@ -4,7 +4,9 @@ import Loader from '../loader/Loader';
 
 function Button({children, onclick, loading, disabled}) {
   function handleClick() {
-    onclick();
+    if (!disabled) {
+      onclick();
+    }
   }
   return (
     <button
