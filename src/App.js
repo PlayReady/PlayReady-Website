@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import ProductOverview from './pages/products/ProductOverview';
 import Login from './pages/login/Login';
 import Logout from './pages/Logout/Logout';
+import Registration from './pages/registration/Registration';
 
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
         <Route
           path="/logout"
           element={<Logout/>}
+        />
+        <Route
+          path="/register"
+          element={<Registration/>}
         />
       </Routes>
     </>
