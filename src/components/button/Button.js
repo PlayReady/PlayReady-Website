@@ -4,9 +4,9 @@ import Loader from '../loader/Loader';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 
-function Button({children, onclick, loading, disabled, confirmed}) {
+function Button({children, onclick, loading, disabled, confirmed, type}) {
   function handleClick() {
-    if (!disabled) {
+    if (!disabled && onclick) {
       onclick();
     }
   }
@@ -19,6 +19,7 @@ function Button({children, onclick, loading, disabled, confirmed}) {
         loading ? 'loading' :
         confirmed && 'confirmed'
       }
+      type={type}
     >
       {loading && <div className={`overlay`}><Loader/></div>}
       {confirmed && <div className={`overlay`}>

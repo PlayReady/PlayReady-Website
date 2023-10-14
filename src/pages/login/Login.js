@@ -14,9 +14,11 @@ function Login() {
     setCredentials({...credentials, [name]: value});
   };
 
-  async function handleSubmit() {
+  async function handleSubmit(event) {
+    event.preventDefault();
     try {
       await login(credentials);
+      console.log('form done');
     } catch (e) {
       console.error(e);
       setError('Something went wrong.');
@@ -25,7 +27,7 @@ function Login() {
 
   return (
     <div className="loginPage">
-      <div className="container">
+      <form onSubmit={handleSubmit} className="container">
         <h1>Log in</h1>
         <TextInput
           name="username"
@@ -42,10 +44,9 @@ function Login() {
         />
         {error &&<ErrorText>{error}</ErrorText>}
         <Button
-
-          onclick={handleSubmit}
+          type="submit"
         >Log in</Button>
-      </div>
+      </form>
     </div>
   );
 }
