@@ -6,6 +6,7 @@ import {AuthContext} from '../../context/AuthContext';
 
 function ProductCard({product, requested}) {
   const [Loading, setLoading] = useState(false);
+  const [isRequested, setIsRequested] = useState(requested);
   const {getUser}=useContext(AuthContext);
 
   async function requestProduct() {
@@ -16,6 +17,7 @@ function ProductCard({product, requested}) {
             'id': product.id,
           },
       );
+      setIsRequested(true);
     } catch (e) {
 
     }
@@ -38,7 +40,7 @@ function ProductCard({product, requested}) {
         <Button
           onclick={handleClick}
           loading={Loading}
-          confirmed={requested}
+          confirmed={isRequested}
         >
             Vraag aan
         </Button>

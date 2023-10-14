@@ -42,8 +42,6 @@ function ProductOverview() {
     fetchProducts();
     if (isAuth) {
       requestProduct();
-    } else {
-
     }
     setIsLoading(false);
   }, [],
@@ -53,10 +51,10 @@ function ProductOverview() {
   return (
     < div className="productOverview">
       {isLoading && <Loader/>}
-      {error && <p>{error}</p>}
+      {error && <p>{error.message}</p>}
       {Products.map((product) => {
         return <ProductCard
-          key={product}
+          key={product.id}
           product={product}
           requested={checkIsRequested(product.id)}
         />;
