@@ -4,8 +4,9 @@ import Button from '../button/Button';
 import axios from 'axios';
 import {AuthContext} from '../../context/AuthContext';
 
-function ProductCard({product}) {
+function ProductCard({product, requested}) {
   const [Loading, setLoading] = useState(false);
+  const [isRequested, setIsRequested] = useState(requested);
   const {getUser}=useContext(AuthContext);
 
   async function requestProduct() {
@@ -13,9 +14,10 @@ function ProductCard({product}) {
       const {} =await axios.post(
           'http://localhost:8080/users/'+getUser()+'/requestedProducts',
           {
-            'id': 1,
+            'id': product.id,
           },
       );
+      setIsRequested(true);
     } catch (e) {
 
     }
@@ -35,7 +37,13 @@ function ProductCard({product}) {
       <div className="productCardContent">
         <h1>{product.name}</h1>
         <p>€{product.price},- per maand</p>
-        <Button onclick={handleClick} loading={Loading}>Vraag aan</Button>
+        <Button
+          onclick={handleClick}
+          loading={Loading}
+          confirmed={isRequested}
+        >
+            Vraag aan
+        </Button>
       </div>
     </div>
   );

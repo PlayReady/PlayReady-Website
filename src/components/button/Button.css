@@ -21,18 +21,24 @@ button:hover {
 
 .overlay {
     position: absolute;
-
+    color: green;
+    font-size: 24px;
 }
 
 .loading {
     color: transparent;
 }
 
-.disabled {
+button.confirmed {
+    color: transparent;
+    border-color: green ;
+}
+
+button.disabled {
     opacity: 50%;
 }
 
-.disabled:hover {
+button.disabled:hover {
     cursor: not-allowed;
     border-color:white;
     color: white;
