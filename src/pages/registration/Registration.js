@@ -31,7 +31,8 @@ function Registration() {
     const {name, value} = event.target;
     setCredentials({...credentials, [name]: value});
   };
-  async function handleSubmit() {
+  async function handleSubmit(event) {
+    event.preventDefault();
     setLoading(true);
     try {
       await axios.post('http://localhost:8080/register',
@@ -49,7 +50,7 @@ function Registration() {
   }
   return (
     <div className="registration">
-      <div className="container">
+      <form className="container" onSubmit={handleSubmit}>
         <h1>Registreer</h1>
         <TextInput
           name="username"
@@ -84,12 +85,12 @@ function Registration() {
           value={credentials.confirmpassword}
         />
         <Button
-          onclick={handleSubmit}
+          type="submit"
           disabled={!validated}
         >
           {loading ?<Loader/> : 'Registreer'}
         </Button>
-      </div>
+      </form>
     </div>
   );
 }
