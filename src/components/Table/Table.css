@@ -1,0 +1,19 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border: black solid 10px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+td,th {
+    background-color: #353535;
+    padding: 5px;
+    color: white;
+}
+thead {
+    border-bottom: black solid 4px;
+}
+td {
+    border-bottom: black solid 1px;
+}
