@@ -7,6 +7,7 @@ import ProductOverview from './pages/products/ProductOverview';
 import Login from './pages/login/Login';
 import Logout from './pages/Logout/Logout';
 import Registration from './pages/registration/Registration';
+import ProfilePage from './pages/profile/ProfilePage';
 
 
 function App() {
@@ -33,6 +34,10 @@ function App() {
         <Route
           path="/register"
           element={<Registration/>}
+        />
+        <Route
+          path="/profile"
+          element={<ProfilePage/>}
         />
       </Routes>
     </>
