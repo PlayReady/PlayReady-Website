@@ -1,10 +1,11 @@
 import React from 'react';
+import './Table.css';
 
 function TableHeader({children}) {
   return (
-    <th>
+    <thead>
       {children}
-    </th>
+    </thead>
   );
 }
 
