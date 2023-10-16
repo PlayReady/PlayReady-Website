@@ -1,0 +1,27 @@
+.profilePage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 50px;
+}
+
+.profile {
+    flex-grow: 1;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #353535;
+    border-radius: 20px;
+}
+
+.profile-field {
+    min-width: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+}

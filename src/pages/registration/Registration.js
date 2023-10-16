@@ -48,6 +48,7 @@ function Registration() {
     }
     setLoading(false);
   }
+
   return (
     <div className="registration">
       <form className="container" onSubmit={handleSubmit}>

@@ -36,6 +36,25 @@ function AuthContextProvider({children}) {
     }
   }
 
+  async function getUserInfo() {
+    const token =getToken();
+    const user = getUser();
+    try {
+      const {data} =await axios.get(
+          'http://localhost:8080/users/'+user,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+      );
+      console.log(data);
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   function logout() {
     localStorage.clear();
     setAuth(false);
@@ -60,6 +79,7 @@ function AuthContextProvider({children}) {
     logout,
     getToken,
     getUser,
+    getUserInfo,
   };
 
   return (
