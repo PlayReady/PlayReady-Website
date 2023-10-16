@@ -44,7 +44,7 @@ function ProductOverview() {
       requestProduct();
     }
     setIsLoading(false);
-  }, [],
+  }, [isAuth],
   );
 
 
