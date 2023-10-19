@@ -9,6 +9,7 @@ import Logout from './pages/Logout/Logout';
 import Registration from './pages/registration/Registration';
 import ProfilePage from './pages/profile/ProfilePage';
 import PageWrapper from './components/pagewrapper/PageWrapper';
+import InvoicePage from './pages/invoicepage/InvoicePage';
 
 
 function App() {
@@ -40,6 +41,10 @@ function App() {
           <Route
             path="/profile"
             element={<ProfilePage/>}
+          />
+          <Route
+            path="/invoices"
+            element={<InvoicePage/>}
           />
         </Routes>
       </PageWrapper>
