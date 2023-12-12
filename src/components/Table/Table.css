@@ -4,6 +4,7 @@ table{
     border: black solid 10px;
     border-radius: 20px;
     overflow: hidden;
+    padding: 25px;
 }
 
 td,th {
@@ -16,4 +17,8 @@ thead {
 }
 td {
     border-bottom: black solid 1px;
+}
+
+.tabletitle {
+    text-align: center;
 }

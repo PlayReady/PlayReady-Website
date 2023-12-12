@@ -34,10 +34,9 @@ function Header() {
     {name: 'Profiel', path: '/profile'},
     {name: 'Log uit', path: '/logout'},
   ];
-  if (isAuth && (roles.includes('ROLE_ADMIN')||roles.includes('ROLE_RENTER'))) {
+  if (isAuth && (roles.includes('ROLE_ADMIN'))) {
     rightOptionsAuth.unshift(
         {name: 'facturen', path: '/invoices'},
-        {name: 'contracten', path: '/contracts'},
     );
   }
 
