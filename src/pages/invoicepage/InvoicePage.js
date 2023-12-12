@@ -6,9 +6,23 @@ import TableCell from '../../components/Table/TableCell';
 import Button from '../../components/button/Button';
 import './InvoicePage.css';
 import axios from 'axios';
+import TextInput from '../../components/textinput/TextInput';
+import FileInput from '../../components/fileInput/FileInput';
 
 function InvoicePage() {
   const [invoices, setInvoices] = useState([]);
+  const [file, setFile] = useState();
+  const [invoiceData, setInvoiceData] = useState(
+      {
+        year: '',
+        month: '',
+        price: '',
+      });
+
+  const handleInputChange = (event) => {
+    const {name, value} = event.target;
+    setInvoiceData({...invoiceData, [name]: value});
+  };
 
   async function fetchinvoices() {
     try {
@@ -41,6 +55,35 @@ function InvoicePage() {
     }
   }
 
+  const onFileChange =(event)=> {
+    setFile(event.target.files[0]);
+  };
+  async function uploadInvoice() {
+    try {
+      const formData = new FormData();
+      formData.append('year', invoiceData.year);
+      formData.append('month', invoiceData.month);
+      formData.append('price', invoiceData.price);
+      formData.append('file', file);
+
+      const {data} = await axios.post(
+          'http://localhost:8080/invoices',
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          },
+      );
+
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+      throw e;
+    }
+  }
+
+
   useEffect(() => {
     fetchinvoices();
   }, []);
@@ -72,6 +115,25 @@ function InvoicePage() {
           </TableRow>;
         })}
       </Table>
+      jaar<TextInput
+        name="year"
+        onchange={handleInputChange}
+        value={invoiceData.year}
+      />
+      maand<TextInput
+        name="month"
+        onchange={handleInputChange}
+        value={invoiceData.month}
+      />
+      bedrag<TextInput
+        name="price"
+        onchange={handleInputChange}
+        value={invoiceData.price}
+      />
+      <FileInput type="file" onChange={onFileChange}/>
+      <Button onclick={uploadInvoice}>
+        add
+      </Button>
     </div>
   );
 }
