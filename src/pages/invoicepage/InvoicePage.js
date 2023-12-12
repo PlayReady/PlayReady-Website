@@ -65,7 +65,7 @@ function InvoicePage() {
               {invoice.contractId ? invoice.contractId : '-'}
             </TableCell>
             <TableCell>
-              <Button onclick={downloadInvoice()}>
+              <Button onclick={() => downloadInvoice(invoice.id)}>
                 Download
               </Button>
             </TableCell>
