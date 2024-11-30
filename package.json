@@ -20,7 +20,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "PORT=8080 react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "start:http": "PORT=80 react-scripts --openssl-legacy-provider start",
     "start:dev": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
