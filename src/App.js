@@ -10,12 +10,14 @@ import Registration from './pages/registration/Registration';
 import ProfilePage from './pages/profile/ProfilePage';
 import PageWrapper from './components/pagewrapper/PageWrapper';
 import InvoicePage from './pages/invoicepage/InvoicePage';
-
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <>
       <Header/>
+      <ToastContainer position="bottom-center" autoClose={2000} theme="dark"/>
       <PageWrapper>
         <Routes>
           <Route

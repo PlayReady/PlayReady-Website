@@ -2,6 +2,8 @@ import React, {createContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AuthContext = createContext({});
 
@@ -32,7 +34,7 @@ function AuthContextProvider({children}) {
       navigator('/profile');
     } catch (e) {
       console.log(e);
-      throw e;
+      toast(e);
     }
   }
 

@@ -1,3 +1,9 @@
 .invoices {
     padding: 50px;
 }
+.invoices form {
+    display: flex;
+    flex-wrap: wrap; /* Allows input wrapping if needed */
+    gap: 10px;       /* Adds space between elements */
+    align-items: center; /* Vertically align items center */
+}

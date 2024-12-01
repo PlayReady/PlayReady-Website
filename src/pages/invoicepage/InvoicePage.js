@@ -8,6 +8,8 @@ import './InvoicePage.css';
 import axios from 'axios';
 import TextInput from '../../components/textinput/TextInput';
 import FileInput from '../../components/fileInput/FileInput';
+import {toast} from 'react-toastify';
+
 
 function InvoicePage() {
   const [invoices, setInvoices] = useState([]);
@@ -55,9 +57,10 @@ function InvoicePage() {
     }
   }
 
-  const onFileChange =(event)=> {
+  const onFileChange = (event) => {
     setFile(event.target.files[0]);
   };
+
   async function uploadInvoice() {
     try {
       const formData = new FormData();
@@ -79,7 +82,7 @@ function InvoicePage() {
       console.log(data);
     } catch (e) {
       console.error(e);
-      throw e;
+      toast.error(e.message);
     }
   }
 
@@ -91,6 +94,30 @@ function InvoicePage() {
 
   return (
     <div className='invoices'>
+      <form>
+        <TextInput
+          placeholder="jaar"
+          name="year"
+          onchange={handleInputChange}
+          value={invoiceData.year}
+        />
+        <TextInput
+          placeholder="maand"
+          name="month"
+          onchange={handleInputChange}
+          value={invoiceData.month}
+        />
+        <TextInput
+          placeholder="bedrag"
+          name="price"
+          onchange={handleInputChange}
+          value={invoiceData.price}
+        />
+        <FileInput type="file" onChange={onFileChange}/>
+        <Button onclick={uploadInvoice}>
+                  add
+        </Button>
+      </form>
       <Table title="Facturen">
         <TableHeader>
           <TableCell><h3>Maand</h3></TableCell>
@@ -103,37 +130,18 @@ function InvoicePage() {
           return <TableRow key={invoice}>
             <TableCell>{invoice.month} {invoice.year}</TableCell>
             <TableCell>{invoice.price}</TableCell>
-            <TableCell>{invoice.paid ? 'Betaald':'Te betalen'}</TableCell>
+            <TableCell>{invoice.paid ? 'Betaald' : 'Te betalen'}</TableCell>
             <TableCell>
               {invoice.contractId ? invoice.contractId : '-'}
             </TableCell>
             <TableCell>
               <Button onclick={() => downloadInvoice(invoice.id)}>
-                Download
+                              Download
               </Button>
             </TableCell>
           </TableRow>;
         })}
       </Table>
-      jaar<TextInput
-        name="year"
-        onchange={handleInputChange}
-        value={invoiceData.year}
-      />
-      maand<TextInput
-        name="month"
-        onchange={handleInputChange}
-        value={invoiceData.month}
-      />
-      bedrag<TextInput
-        name="price"
-        onchange={handleInputChange}
-        value={invoiceData.price}
-      />
-      <FileInput type="file" onChange={onFileChange}/>
-      <Button onclick={uploadInvoice}>
-        add
-      </Button>
     </div>
   );
 }
