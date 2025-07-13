@@ -4,7 +4,7 @@ import './Home.css';
 function WelcomeSection() {
   return (
     <div className="WelcomeSection">
-      <h1>hello</h1>
+      <h1>Hallo</h1>
       <p>
         {
           'Bij PlayReady begrijpen we de passie voor gaming.' +
