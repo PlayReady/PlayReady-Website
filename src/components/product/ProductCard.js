@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './Product.css';
 import Button from '../button/Button';
 import axios from 'axios';
@@ -6,7 +6,7 @@ import {AuthContext} from '../../context/AuthContext';
 
 function ProductCard({product, requested}) {
   const [Loading, setLoading] = useState(false);
-  const [isRequested, setIsRequested] = useState(requested);
+  const [isRequested, setIsRequested] = useState(false);
   const {getUser}=useContext(AuthContext);
 
   async function requestProduct() {
@@ -22,6 +22,11 @@ function ProductCard({product, requested}) {
 
     }
   }
+
+  useEffect(() => {
+    setIsRequested(requested);
+  });
+
   function handleClick() {
     setLoading(true);
     requestProduct();

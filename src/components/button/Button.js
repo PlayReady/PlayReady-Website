@@ -6,7 +6,7 @@ import {faCheck} from '@fortawesome/free-solid-svg-icons';
 
 function Button({children, onclick, loading, disabled, confirmed, type}) {
   function handleClick() {
-    if (!disabled && onclick) {
+    if (!(disabled || confirmed) && onclick) {
       onclick();
     }
   }
