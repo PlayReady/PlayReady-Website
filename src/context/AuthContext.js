@@ -14,7 +14,10 @@ function AuthContextProvider({children}) {
     if (token !== null) {
       const decodedToken = jwtDecode(localStorage.getItem('token'));
       if (decodedToken.exp < Date.now()) {
+        console.log(decodedToken);
         setAuth(true);
+      } else {
+        setAuth(false);
       }
     }
   });
