@@ -11,15 +11,13 @@ function ProductCard({product, requested}) {
 
   async function requestProduct() {
     try {
-      const {} =await axios.post(
-          'http://localhost:8080/users/'+getUser()+'/requestedProducts',
-          {
-            'id': product.id,
-          },
+      await axios.post(
+          `${process.env.REACT_APP_BACKEND_URL}/users/${getUser()}/requestedProducts`,
+          {id: product.id},
       );
       setIsRequested(true);
     } catch (e) {
-
+      console.error('Request failed:', e);
     }
   }
 
