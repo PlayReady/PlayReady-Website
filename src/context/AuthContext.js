@@ -24,7 +24,7 @@ function AuthContextProvider({children}) {
   async function login(credentials) {
     try {
       const {data} = await axios.post(
-          'http://localhost:8080/auth',
+          `${process.env.REACT_APP_BACKEND_URL}/auth`,
           {
             'username': credentials.username,
             'password': credentials.password,
@@ -43,7 +43,7 @@ function AuthContextProvider({children}) {
     const user = getUser();
     try {
       const {data} =await axios.get(
-          'http://localhost:8080/users/'+user,
+          `${process.env.REACT_APP_BACKEND_URL}/users/`+user,
           {
             headers: {
               Authorization: `Bearer ${token}`,

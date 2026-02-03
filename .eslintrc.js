@@ -31,5 +31,6 @@ module.exports = {
     'require-jsdoc': 'off',
     'linebreak-style': 'off',
     'react/prop-types': 'off',
+    "max-len": ["warn", { "code": 120 }]
   },
 };
