@@ -14,7 +14,7 @@ function FeaturedProducts() {
   async function fetchFeaturedProducts() {
     setLoading(true);
     try {
-      const {data} = await axios.get('http://localhost:8080/products/featured');
+      const {data} = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/products/featured`);
       setFeaturedProducts(data);
     } catch (e) {
       console.log(e);
@@ -25,7 +25,7 @@ function FeaturedProducts() {
   async function requestProduct() {
     try {
       const {data} =await axios.get(
-          'http://localhost:8080/users/'+getUser()+'/requestedProducts',
+          `${process.env.REACT_APP_BACKEND_URL}/users/`+getUser()+`/requestedProducts`,
       );
       setRequestedProductIds(data);
       console.log(data);

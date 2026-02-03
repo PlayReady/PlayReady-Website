@@ -27,7 +27,7 @@ function InvoicePage() {
   async function fetchinvoices() {
     try {
       const {data} = await axios.get(
-          'http://localhost:8080/invoices',
+          `${process.env.REACT_APP_BACKEND_URL}/invoices`,
       );
       setInvoices(data);
       console.log(data);
@@ -38,7 +38,7 @@ function InvoicePage() {
 
   async function downloadInvoice(id) {
     try {
-      const response = await axios.get(`http://localhost:8080/invoices/${id}/file`, {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/invoices/${id}/file`, {
         responseType: 'blob',
       });
       const blob = new Blob([response.data]);
@@ -67,7 +67,7 @@ function InvoicePage() {
       formData.append('file', file);
 
       const {data} = await axios.post(
-          'http://localhost:8080/invoices',
+          `${process.env.REACT_APP_BACKEND_URL}/invoices`,
           formData,
           {
             headers: {

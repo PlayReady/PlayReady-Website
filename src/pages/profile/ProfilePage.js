@@ -40,7 +40,7 @@ function ProfilePage() {
     event.preventDefault();
     setLoading(true);
     try {
-      await axios.patch('http://localhost:8080/users/'+getUser(),
+      await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/users/`+getUser(),
           {
             username: userInfo.username,
             email: userInfo.email,

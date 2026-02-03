@@ -35,7 +35,7 @@ function Registration() {
     event.preventDefault();
     setLoading(true);
     try {
-      await axios.post('http://localhost:8080/register',
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`,
           {
             'username': credentials.username,
             'email': credentials.email,
